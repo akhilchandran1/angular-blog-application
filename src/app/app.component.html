@@ -70,4 +70,56 @@
   <h4 class="">{{message}}</h4>
 </div>
 
+<div class="row p-2">
+  <div class="col-md-12 justify-content-center">
+    <h4>All Blog Posts</h4>
+  </div>
+
+  <div class="col-md-3" *ngFor = "let item of blogs">
+    <div class="card" *ngIf="!item.isedit; else elseBlock">
+      <div class="card-body">
+        <div class="card-title">
+          <h1>{{item.title}}</h1>
+        </div>
+        <div class="card-subtitle">
+          <h4>{{item.discription}}</h4>
+        </div>
+        <div class="card-text">
+          {{item.content}}
+        </div>
+        <span>
+          <a href="#" (click)="editBlogPost(item)" class="btn btn-primary btn-xs">Edit</a>
+          <a href="#" (click)="deleteBlogPost(item.id)" class="btn btn-danger btn-xs">Delete</a>
+        </span>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h1>Edit Blog Post</h1>
+          </div>
+          <div class="form">
+            <div class="form-group">
+              <div class="col-md-12">
+                <input type="text" [(ngModel)]="item.editTitle" class="form-control">
+              </div>
+              <div class="col-md-12">
+                <textarea [(ngModel)]="item.editDiscription" class="form-control"></textarea>
+              </div>
+              <div class="col-md-12">
+                <textarea [(ngModel)]="item.editContent" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn btn-danger btn-xs" (click)="item.isedit = false">Cancal</a>
+          <a href="#" class="btn btn-secondary btn-xs" (click)="updateBlogPost(item)">Update</a>
+ <!---->
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+
 </div>

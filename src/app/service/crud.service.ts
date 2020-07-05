@@ -11,4 +11,14 @@ export class CrudService {
   create_newBlogPost(Record) {
     return this.fireServices.collection('Blogs').add(Record);
   }
+
+  get_allBlogPost() {
+    return this.fireServices.collection('Blogs').snapshotChanges();
+  }
+
+  update_blogPost(recordid, record) {
+    this.fireServices.doc('Blogs/' + recordid).update(record);
+
+  }
+
 }
