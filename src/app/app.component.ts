@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'angular-blog-application';
 
   // variables
-  blogs: string;
+  blogs: any;
   blogTitle: string;
   blogDescription: string;
   blogContent: string;
@@ -66,7 +66,7 @@ export class AppComponent {
     this.crudService.update_blogPost(recordData.id, record);
     recordData.isedit = false;
   }
-  deleteBlogPost(Record) {
-
+  deleteBlogPost(record_id) {
+    this.crudService.delete_blogPost(record_id);
   }
 }

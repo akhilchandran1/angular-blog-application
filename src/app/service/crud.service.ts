@@ -21,4 +21,8 @@ export class CrudService {
 
   }
 
+  delete_blogPost(record_id){
+    this.fireServices.doc('Blogs/' + record_id).delete();
+  }
+
 }

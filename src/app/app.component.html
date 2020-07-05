@@ -10,21 +10,14 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Navbar</a>
-
+  <a class="navbar-brand" href="https://www.akhilchandran-dev.com/">Akhil Chandran</a>
+<!--
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="#"
           >Home <span class="sr-only">(current)</span></a
         >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input
@@ -37,7 +30,7 @@
         Search
       </button>
     </form>
-  </div>
+  </div> -->
 </nav>
 
 <!-- -->
@@ -59,11 +52,12 @@
 
   <div class="form-group">
     <label for="content">Content</label>
-    <textarea class="form-control" [(ngModel)]="blogContent" placeholder="Content"></textarea>
+    <textarea class="form-control" [(ngModel)]="blogContent" placeholder="Content" rows="4"></textarea>
   </div>
 
 <div class="form-group">
-  <button class="btn btn-primary" type="submit" (click)="createBlog()" [disabled]="!blogTitle || !blogDescription || !blogContent">Save</button>
+  <button class="btn btn-success mr-1" type="submit" (click)="createBlog()" [disabled]="!blogTitle || !blogDescription || !blogContent">Save</button>
+  <button class="btn btn-secondary" >Cancal</button>
 </div>
 
 <div class="form-group">
@@ -75,20 +69,20 @@
     <h4>All Blog Posts</h4>
   </div>
 
-  <div class="col-md-3" *ngFor = "let item of blogs">
+  <div class="col-sm-6 mb-3" *ngFor = "let item of blogs">
     <div class="card" *ngIf="!item.isedit; else elseBlock">
       <div class="card-body">
         <div class="card-title">
           <h1>{{item.title}}</h1>
         </div>
-        <div class="card-subtitle">
+        <div class="card-subtitle text-muted mb-2">
           <h4>{{item.discription}}</h4>
         </div>
-        <div class="card-text">
+        <div class="card-text mb-2">
           {{item.content}}
         </div>
         <span>
-          <a href="#" (click)="editBlogPost(item)" class="btn btn-primary btn-xs">Edit</a>
+          <a href="#" (click)="editBlogPost(item)" class="btn btn-primary btn-xs mr-1">Edit</a>
           <a href="#" (click)="deleteBlogPost(item.id)" class="btn btn-danger btn-xs">Delete</a>
         </span>
       </div>
@@ -101,19 +95,19 @@
           </div>
           <div class="form">
             <div class="form-group">
-              <div class="col-md-12">
+              <div class="col-sm-12 mb-2">
                 <input type="text" [(ngModel)]="item.editTitle" class="form-control">
               </div>
-              <div class="col-md-12">
+              <div class="col-sm-12 mb-2">
                 <textarea [(ngModel)]="item.editDiscription" class="form-control"></textarea>
               </div>
-              <div class="col-md-12">
-                <textarea [(ngModel)]="item.editContent" class="form-control"></textarea>
+              <div class="col-md-12 mb-2">
+                <textarea [(ngModel)]="item.editContent" class="form-control" rows="4"></textarea>
               </div>
             </div>
           </div>
-          <a href="#" class="btn btn-danger btn-xs" (click)="item.isedit = false">Cancal</a>
-          <a href="#" class="btn btn-secondary btn-xs" (click)="updateBlogPost(item)">Update</a>
+          <a href="#" class="btn btn-danger btn-xs mr-1" (click)="item.isedit = false">Cancal</a>
+          <a href="#" class="btn btn-info btn-xs" (click)="updateBlogPost(item)">Update</a>
  <!---->
         </div>
       </div>
